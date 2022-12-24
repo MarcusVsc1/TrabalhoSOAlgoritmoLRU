@@ -37,12 +37,11 @@ public class LRU {
             if(this.frames.size() == maxFrames) {
                 substituirPagina(pagina);
                 zerarContadores();
-                faltas++;
             } else {
                 zerarContadores();
                 this.frames.add(pagina);
-                faltas++;
             }
+            faltas++;
             System.out.println("Página ["+pagina.getConteudo()+"] foi adicionada ao buffer");
         }
         atualizarReferencia(pagina);
