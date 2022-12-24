@@ -25,6 +25,19 @@ public class Pagina {
         contador.set(0,0);
     }
 
+    public void referenciar(){
+        this.getContador().set(0,1);
+    }
+
+    public Integer converterContadorEmDecimal(){
+        int decimal = 0;
+        for(int i = this.contador.size() - 1; i >= 0 ; i--){
+            decimal += this.contador.get(i) == 0 ? 0 : (int) Math.pow(2, contador.size() -1 - i);
+        }
+
+        return decimal;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Pagina){
@@ -36,20 +49,6 @@ public class Pagina {
     @Override
     public int hashCode() {
         return this.conteudo.hashCode();
-    }
-
-    public void referenciar(){
-        this.getContador().set(0,1);
-    }
-
-
-    public Integer converterContadorEmDecimal(){
-        int decimal = 0;
-        for(int i = this.contador.size() - 1; i >= 0 ; i--){
-            decimal += this.contador.get(i) == 0 ? 0 : (int) Math.pow(2, contador.size() -1 - i);
-        }
-
-        return decimal;
     }
 
     @Override
