@@ -1,4 +1,7 @@
-package br.ufjf.model;
+package br.ufjf.resources;
+
+import br.ufjf.model.Pagina;
+import br.ufjf.utils.CLI;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -15,25 +18,26 @@ public class LRU {
     }
 
     public void rodarLRUAging(List<Pagina> insercoes){
-        System.out.println("====================================================");
-        System.out.println("Iniciando algoritmo LRU com Aging (envelhecimento)");
+        CLI.write("====================================================");
+        CLI.write("Iniciando algoritmo LRU com Aging (envelhecimento)");
+        CLI.write("Lista de páginas a inserir: " + insercoes);
         insercoes.forEach(this::inserirPagina);
-        System.out.println("====================================================");
-        System.out.println("Total de faltas: "+ faltas);
-        System.out.println("Buffer final: "+ this.frames);
-        System.out.println("====================================================");
+        CLI.write("====================================================");
+        CLI.write("Total de faltas: "+ faltas);
+        CLI.write("Buffer final: "+ this.frames);
+        CLI.write("====================================================");
         this.faltas = 0;
         this.frames = new LinkedList<>();
     }
 
     private void inserirPagina(Pagina pagina) {
-        System.out.println("====================================================");
+        CLI.write("====================================================");
         if(this.frames.contains(pagina)){
-            System.out.println("Pagina presente: ["+pagina.getConteudo()+"], atualizando a referência. ");
+            CLI.write("Pagina presente: ["+pagina.getConteudo()+"], atualizando a referência. ");
             zerarContadores();
         }
         else {
-            System.out.println("Página não presente: ["+pagina.getConteudo()+"]");
+            CLI.write("Página não presente: ["+pagina.getConteudo()+"]");
             if(this.frames.size() == maxFrames) {
                 substituirPagina(pagina);
                 zerarContadores();
@@ -42,17 +46,17 @@ public class LRU {
                 this.frames.add(pagina);
             }
             faltas++;
-            System.out.println("Página ["+pagina.getConteudo()+"] foi adicionada ao buffer");
+            CLI.write("Página ["+pagina.getConteudo()+"] foi adicionada ao buffer");
         }
         atualizarReferencia(pagina);
-        System.out.println("Buffer atual: "+this.frames.toString());
-        System.out.println("Realizando interrupção de relógio...");
+        CLI.write("Buffer atual: "+this.frames.toString());
+        CLI.write("Realizando interrupção de relógio...");
 
     }
 
     private void substituirPagina(Pagina pagina) {
         Pagina candidata = frames.stream().min(Comparator.comparing(Pagina::converterContadorEmDecimal)).orElse(null);
-        System.out.println("Página substituída: ["+candidata.getConteudo()+"]");
+        CLI.write("Página substituída: ["+candidata.getConteudo()+"]");
         int idx = this.frames.indexOf(candidata);
         zerarContadores();
         this.frames.set(idx, pagina);
