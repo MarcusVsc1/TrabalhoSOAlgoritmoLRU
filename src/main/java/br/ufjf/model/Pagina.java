@@ -15,7 +15,7 @@ public class Pagina {
 
     public Pagina(String conteudo) {
         this.conteudo = conteudo;
-        this.contador = Arrays.asList(1,0,0,0,0,0);
+        this.contador = Arrays.asList(0,0,0,0,0,0);
     }
 
     public void atualizarContador(){

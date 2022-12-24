@@ -30,12 +30,12 @@ public class LRU {
         if(this.frames.contains(pagina)){
             System.out.println("Pagina presente: ["+pagina.getConteudo()+"], atualizando a referência. ");
             zerarContadores();
-            atualizarReferencia(pagina);
         }
         else {
             System.out.println("Página não presente: ["+pagina.getConteudo()+"]");
             if(this.frames.size() == maxFrames) {
                 substituirPagina(pagina);
+                zerarContadores();
                 faltas++;
             } else {
                 zerarContadores();
@@ -44,6 +44,7 @@ public class LRU {
             }
             System.out.println("Página ["+pagina.getConteudo()+"] foi adicionada ao buffer");
         }
+        atualizarReferencia(pagina);
         System.out.println("Buffer atual: "+this.frames.toString());
         System.out.println("Realizando interrupção de relógio...");
 
@@ -52,7 +53,6 @@ public class LRU {
     private void substituirPagina(Pagina pagina) {
         Pagina candidata = frames.stream().min(Comparator.comparing(Pagina::converterContadorEmDecimal)).orElse(null);
         System.out.println("Página substituída: ["+candidata.getConteudo()+"]");
-
         int idx = this.frames.indexOf(candidata);
         zerarContadores();
         this.frames.set(idx, pagina);
