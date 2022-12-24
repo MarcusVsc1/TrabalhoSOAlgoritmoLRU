@@ -20,6 +20,7 @@ public class LRU {
         insercoes.forEach(this::inserirPagina);
         System.out.println("====================================================");
         System.out.println("Total de faltas: "+ faltas);
+        System.out.println("Buffer final: "+ this.frames);
         System.out.println("====================================================");
         this.faltas = 0;
         this.frames = new LinkedList<>();
