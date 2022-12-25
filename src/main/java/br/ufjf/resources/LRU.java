@@ -51,6 +51,8 @@ public class LRU {
         }
         atualizarReferencia(pagina);
         write("Buffer atual: "+this.frames.toString());
+        write("Contador de cada página:");
+        frames.forEach(page-> write(page.toString()+": "+page.getContador()));
         write("Realizando interrupção de relógio...");
 
     }
