@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static br.ufjf.utils.CLI.write;
+import static br.ufjf.utils.IOUtils.write;
 
 public class LRU {
 

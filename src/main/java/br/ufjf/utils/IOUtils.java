@@ -3,7 +3,7 @@ package br.ufjf.utils;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class CLI {
+public class IOUtils {
 
     private final static Scanner input = new Scanner(System.in);
     private final static PrintStream output = System.out;

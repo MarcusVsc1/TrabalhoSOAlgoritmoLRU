@@ -2,8 +2,8 @@ package br.ufjf.program;
 
 import br.ufjf.model.Pagina;
 import br.ufjf.resources.LRU;
-import static br.ufjf.utils.CLI.write;
-import static br.ufjf.utils.CLI.read;
+import static br.ufjf.utils.IOUtils.write;
+import static br.ufjf.utils.IOUtils.read;
 import br.ufjf.utils.FileUtils;
 
 import java.util.List;
