@@ -38,7 +38,7 @@ public class LRU {
         }
         else {
             CLI.write("Página não presente: ["+pagina.getConteudo()+"]");
-            if(this.frames.size() == maxFrames) {
+            if(this.frames.size() >= maxFrames) {
                 substituirPagina(pagina);
                 zerarContadores();
             } else {
