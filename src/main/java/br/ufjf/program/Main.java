@@ -2,12 +2,12 @@ package br.ufjf.program;
 
 import br.ufjf.model.Pagina;
 import br.ufjf.resources.LRU;
-import static br.ufjf.utils.IOUtils.write;
-import static br.ufjf.utils.IOUtils.read;
 import br.ufjf.utils.FileUtils;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static br.ufjf.utils.IOUtils.read;
+import static br.ufjf.utils.IOUtils.write;
 
 
 
@@ -17,10 +17,7 @@ public class Main {
             write("====================================================");
             write("Por favor, informe o arquivo contendo as páginas que serão inseridas.");
             String nomeArquivo = read();
-            List<Pagina> insercoes = FileUtils.lerInsercoesDoArquivo(nomeArquivo)
-                    .stream()
-                    .map(Pagina::new)
-                    .collect(Collectors.toList());
+            List<Pagina> insercoes = FileUtils.lerInsercoesDoArquivo(nomeArquivo);
             write("====================================================");
             write("Por favor, informe o número máximo de páginas no buffer de memória.");
             int maxFrames = Integer.parseInt(read());
