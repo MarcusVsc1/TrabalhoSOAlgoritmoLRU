@@ -61,7 +61,6 @@ public class LRU {
         Pagina candidata = frames.stream().min(Comparator.comparing(Pagina::converterContadorEmDecimal)).orElse(null);
         write("Página substituída: ["+candidata.getConteudo()+"]");
         int idx = this.frames.indexOf(candidata);
-        zerarContadores();
         this.frames.set(idx, pagina);
     }
 
