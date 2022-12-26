@@ -24,8 +24,8 @@ public class LRU {
         write("Lista de páginas a inserir: " + insercoes);
         insercoes.forEach(this::inserirPagina);
         write("====================================================");
-        write("Total de faltas: "+ faltas);
-        write("Buffer final: "+ this.frames);
+        write("Total de faltas: " + faltas);
+        write("Buffer final: " + this.frames);
         write("====================================================");
         this.faltas = 0;
         this.frames = new LinkedList<>();
@@ -35,22 +35,20 @@ public class LRU {
         write("====================================================");
         if(this.frames.contains(pagina)){
             write("Pagina presente: [" + pagina + "], atualizando a referência. ");
-            zerarContadores();
         }
         else {
             write("Página não presente: [" + pagina + "]");
             if(this.frames.size() >= maxFrames) {
                 substituirPagina(pagina);
-                zerarContadores();
             } else {
-                zerarContadores();
                 this.frames.add(pagina);
             }
             faltas++;
             write("Página [" + pagina + "] foi adicionada ao buffer");
         }
+        zerarContadores();
         atualizarReferencia(pagina);
-        write("Buffer atual: "+this.frames.toString());
+        write("Buffer atual: " + this.frames.toString());
         write("Contador de cada página:");
         frames.forEach(page-> write(page + ": " + page.getContador()));
         write("Realizando interrupção de relógio...");
@@ -59,7 +57,7 @@ public class LRU {
 
     private void substituirPagina(Pagina pagina) {
         Pagina candidata = frames.stream().min(Comparator.comparing(Pagina::converterContadorEmDecimal)).orElse(null);
-        write("Página substituída: ["+candidata+"]");
+        write("Página substituída: [" + candidata + "]");
         int idx = this.frames.indexOf(candidata);
         this.frames.set(idx, pagina);
     }
