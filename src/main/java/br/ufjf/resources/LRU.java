@@ -34,11 +34,11 @@ public class LRU {
     private void inserirPagina(Pagina pagina) {
         write("====================================================");
         if(this.frames.contains(pagina)){
-            write("Pagina presente: ["+pagina.getConteudo()+"], atualizando a referência. ");
+            write("Pagina presente: [" + pagina + "], atualizando a referência. ");
             zerarContadores();
         }
         else {
-            write("Página não presente: ["+pagina.getConteudo()+"]");
+            write("Página não presente: [" + pagina + "]");
             if(this.frames.size() >= maxFrames) {
                 substituirPagina(pagina);
                 zerarContadores();
@@ -47,19 +47,19 @@ public class LRU {
                 this.frames.add(pagina);
             }
             faltas++;
-            write("Página ["+pagina.getConteudo()+"] foi adicionada ao buffer");
+            write("Página [" + pagina + "] foi adicionada ao buffer");
         }
         atualizarReferencia(pagina);
         write("Buffer atual: "+this.frames.toString());
         write("Contador de cada página:");
-        frames.forEach(page-> write(page.toString()+": "+page.getContador()));
+        frames.forEach(page-> write(page + ": " + page.getContador()));
         write("Realizando interrupção de relógio...");
 
     }
 
     private void substituirPagina(Pagina pagina) {
         Pagina candidata = frames.stream().min(Comparator.comparing(Pagina::converterContadorEmDecimal)).orElse(null);
-        write("Página substituída: ["+candidata.getConteudo()+"]");
+        write("Página substituída: ["+candidata+"]");
         int idx = this.frames.indexOf(candidata);
         this.frames.set(idx, pagina);
     }
