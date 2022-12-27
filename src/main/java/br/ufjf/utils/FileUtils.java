@@ -15,8 +15,7 @@ public class FileUtils {
     public static List<Pagina> lerInsercoesDoArquivo(String input) throws Exception {
         try {
             Path path = Paths.get("files/" + input);
-            return Arrays.asList(Files.readString(path).split(","))
-                    .stream()
+            return Arrays.stream(Files.readString(path).split(","))
                     .map(Pagina::new)
                     .collect(Collectors.toList());
         } catch (Exception e) {
