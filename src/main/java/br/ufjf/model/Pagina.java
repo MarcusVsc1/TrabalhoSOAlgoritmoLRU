@@ -45,7 +45,15 @@ public class Pagina {
         }
         return  false;
     }
-
+    
+    public String getConteudo() {
+    	return this.conteudo;
+    }
+    
+    public List<Integer> getContador() {
+    	return this.contador;
+    }
+   
     @Override
     public int hashCode() {
         return this.conteudo.hashCode();
